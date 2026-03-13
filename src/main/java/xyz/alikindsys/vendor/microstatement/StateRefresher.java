@@ -9,6 +9,7 @@ import net.minecraft.core.IdMapper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.StateHolder;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -47,6 +48,10 @@ public class StateRefresher {
         }
 
         return states;
+    }
+
+    public <V extends Comparable<V>> Collection<BlockState> addBlockProperty(final Block owner, final Property<V> property, final V defaultValue) {
+        return addProperty(owner::getStateDefinition, Block.BLOCK_STATE_REGISTRY, property, defaultValue);
     }
 
     public <O, S extends StateHolder<O, S>, V extends Comparable<V>> void refreshBlockStates(final Property<V> property, final Collection<V> addedValues, final Collection<V> removedValues) {
