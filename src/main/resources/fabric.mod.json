@@ -15,6 +15,9 @@
     ],
     "main": [
       "xyz.alikindsys.microtonality.Microtonality"
+    ],
+    "fabric-datagen": [
+      "xyz.alikindsys.microtonality.datagen.MicrotonalityDataGenerator"
     ]
   },
   "mixins": [
