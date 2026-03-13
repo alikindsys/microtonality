@@ -20,6 +20,8 @@ public class Microtonality implements ModInitializer {
     public void onInitialize() {
         ModItems.init();
 
+        StateRefresher.INSTANCE.addBlockProperty(Blocks.NOTE_BLOCK, SCALE, 12);
+        StateRefresher.INSTANCE.addBlockProperty(Blocks.NOTE_BLOCK, OCTAVE, 0);
 
         // This is reorderBlockStates, I think.
         RegistryIdRemapCallback.event(BuiltInRegistries.BLOCK)
