@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import xyz.alikindsys.microtonality.ModItems;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -24,7 +25,7 @@ public class MicrotonalityRecipeProvider extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                shaped(RecipeCategory.TOOLS, Items.CRAFTING_TABLE)
+                shaped(RecipeCategory.TOOLS, ModItems.TUNING_FORK)
                         .pattern("N N")
                         .pattern("NNN")
                         .pattern(" B ")
