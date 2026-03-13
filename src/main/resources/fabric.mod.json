@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "microtonality",
+  "version": "${version}",
+  "name": "microtonality",
+  "description": "Visualize villagers point of interest with ease",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/microtonality/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "xyz.alikindsys.microtonality.client.MicrotonalityClient"
+    ],
+    "main": [
+      "xyz.alikindsys.microtonality.Microtonality"
+    ]
+  },
+  "mixins": [
+    "microtonality.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
