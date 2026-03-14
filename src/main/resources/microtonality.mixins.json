@@ -4,6 +4,7 @@
   "package": "xyz.alikindsys.microtonality.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BlockAccessor",
     "NoteBlockMixin"
   ],
   "client": [
