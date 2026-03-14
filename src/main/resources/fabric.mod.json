@@ -3,7 +3,7 @@
   "id": "microtonality",
   "version": "${version}",
   "name": "microtonality",
-  "description": "Visualize villagers point of interest with ease",
+  "description": "Makes noteblocks microtonal.",
   "authors": [],
   "contact": {},
   "license": "MIT",
