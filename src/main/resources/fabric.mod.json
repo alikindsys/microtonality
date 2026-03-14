@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "microtonality",
   "description": "Makes noteblocks microtonal.",
-  "authors": [],
+  "authors": ["alikindsys"],
   "contact": {},
   "license": "MIT",
   "icon": "assets/microtonality/icon.png",
