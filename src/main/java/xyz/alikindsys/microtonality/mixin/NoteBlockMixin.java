@@ -1,9 +1,6 @@
 package xyz.alikindsys.microtonality.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,21 +15,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import xyz.alikindsys.microtonality.Microtonality;
 import xyz.alikindsys.microtonality.ModItems;
-
-import static net.minecraft.world.level.block.NoteBlock.INSTRUMENT;
-import static net.minecraft.world.level.block.NoteBlock.POWERED;
 
 @Mixin(NoteBlock.class)
 public abstract class NoteBlockMixin extends Block  {
@@ -87,20 +79,12 @@ public abstract class NoteBlockMixin extends Block  {
     }
 
     // Injection so that the default state is 12 tet, no octave.
-    @WrapOperation(method = "<init>", at = @At(
+    @ModifyArg(method = "<init>", at = @At(
         value = "INVOKE",
         target = "Lnet/minecraft/world/level/block/NoteBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V")
     )
-    private void microtonality$setDefaultState(NoteBlock instance, BlockState state, Operation<Void> original) {
-        // On the lack of a better option, we retort to making all of it.
-        // I really just wanted to add two things at the end, I suppose my knowledge of mixins isn't there yet.
-        ((BlockAccessor) instance).microtonality$registerDefaultState(this.stateDefinition.any()
-                .setValue(INSTRUMENT, NoteBlockInstrument.HARP)
-                .setValue(NOTE, 0)
-                .setValue(POWERED, false)
-                .setValue(OCTAVE, false)
-                .setValue(SCALE, 12)
-        );
+    private BlockState microtonality$setDefaultState(BlockState par1) {
+        return par1.setValue(OCTAVE, false).setValue(SCALE, 12);
     }
 
     public NoteBlockMixin(Properties properties) {
